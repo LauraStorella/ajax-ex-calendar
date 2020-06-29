@@ -1,0 +1,163 @@
+.month-wrapper {
+  width: 80%;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: lightgray;
+}
+
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header i {
+  font-size: 30px;
+}
+
+h1 {
+  text-align: center;
+}
+ul {
+  list-style: none;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* GENERAL RULES (reset) - start */
+general rules {}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+  }
+  body div, span, ul, a {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  img {
+    width: 100%;
+  }
+/* GENERAL RULES (reset) - end */
+
+
+
+/* CLASS PROPERTIES - start rules */
+class_properties {}
+  .float {
+    float: left;
+  }
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .transform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .text-bold {
+    font-weight: 700;
+  }
+  ul.list-unstyled {
+    padding-left: 0;
+    }
+    ul.list-unstyled li {
+      display: inline-block;
+      list-style: none;
+    }
+    ul.list-unstyled li a {
+      text-decoration: none;
+    }
+/* CLASS PROPERTIES - end rules */
+
+
+
+/* BASE LAYOUT - inizio */
+regole layout {}
+/* BASE LAYOUT - fine */
+
+
+
+/* COMPONENTS (reusable) - start rules */
+components {}
+  components
+/* COMPONENTS (reusable) - end rules */
+
+
+
+/* NAVBAR - start rules */
+nav {}
+  nav {}
+/* NAVBAR - end rules */
+
+
+/* HEADER - start rules */
+header {}
+  header {}
+/* HEADER - end rules */
+
+
+/* MAIN - start rules */
+main {}
+  main {}
+/* MAIN - end rules */
+
+
+/* FOOTER - start rules */
+footer {}
+  footer {}
+/* FOOTER - end rules */
+
+
+
+/* MEDIA QUERY -start rules */
+@media query {}
+  /* Media Query - xs  */
+  @media all and (max-width: 767px) {}
+
+  /* Media Query - sm  */
+  @media all and (min-width: 768px) and (max-width: 991px) {}
+
+  /* Media Query - md  */
+  @media all and (min-width: 992px) and (max-width: 1199px) {}
+
+  /* Media Query - lg  */
+  @media all and (min-width: 1200px) {}
+/* MEDIA QUERY -end rules */
