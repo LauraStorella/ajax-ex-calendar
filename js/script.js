@@ -48,10 +48,10 @@ function printMonth(currentDay){
   $('#current-month').text(currentMonth + " " + currentYear);
 
   for (var i = 1; i <= daysInMonth; i++) {
-    var day = i;
     var context = {
-      'days': day + " " + currentMonth,
-      'holiday': currentDay.format('YYYY-MM-')+addzero(i)
+      // 'days': addZero(i) + " " + currentMonth,   // versione data estesa
+      'days': addZero(i),   // versione data solo numero
+      'holiday': currentDay.format('YYYY-MM-') + addZero(i)
     }
     $('#monthDays').append(template(context));
   }
@@ -62,15 +62,12 @@ function printMonth(currentDay){
 
 
 // Funzione - aggiungo 0 se giorno mese < 10
-function addzero(day){
-  if (day < 10) {
-    return '0' + day;
+function addZero(number){
+  if (number < 10) {
+    return '0' + number;
   }
-  else {
-    return day;
-  }
+  return number
 }
-
 
 
 // Funzione - verifico le festività per il mese scelto
@@ -100,7 +97,8 @@ function checkHoliday(selectedMonth) {
       $('li[data-holiday]').each(function(){
         if ($(this).attr('data-holiday')==holidayDate) {
           var holidayDay = $(this).text();
-          $(this).text(holidayDay+ " "+holidayName)
+          // $(this).text(holidayDay+ " "+holidayName);   // versione data estesa
+          $(this).text(holidayDay);   // versione data solo giorno
           $(this).addClass("red");
         }
       });

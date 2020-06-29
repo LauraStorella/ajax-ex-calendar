@@ -1,5 +1,5 @@
 body {
-  font-family: 'Jura', sans-serif;
+font-family: 'Jura', sans-serif;
 }
 
 .main-wrapper {
@@ -12,19 +12,46 @@ body {
 
 header {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  background-image: linear-gradient(to right bottom, #ff4500, #ff4047, #f44c70, #de5f8e, #c2719f);
+
+}
+header #month-container,
+header #week-container {
+  display: flex;
   align-items: center;
-  height: 40vh;
-  background-color: orangered;
+  /* background-color: orangered; */
+}
+
+header #month-container {
+  height: 25vh;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 header i {
-  font-size: 40px;
+  font-size: 60px;
   color: #2f2f2f;
+}
+header i:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+header #week-container {
+  height: 15vh;
+  justify-content: space-around;
+}
+header #week-container span {
+  font-size: 18px;
+  color: #2f2f2f;
+  font-weight: bold;
+}
+#week-container .white {
+  color: white;
 }
 
 h1 {
   text-align: center;
   font-size: 35px;
+  width: 300px;
 }
 
 ul {
@@ -40,6 +67,7 @@ ul li {
   align-items: center;
   flex-basis: calc(100% / 7);
   height: calc(60vh / 5);
+  font-size: 25px;
   border: 1px dotted whitesmoke;
   
 }
@@ -77,6 +105,7 @@ ul li {
 
 
 
+/* ******************** CSS - General Style Rules ******************** */
 
 /* GENERAL RULES (reset) - start */
 general rules {}
