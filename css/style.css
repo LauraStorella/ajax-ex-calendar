@@ -6,15 +6,30 @@ font-family: 'Jura', sans-serif;
   width: 50%;
   height: 100vh;
   margin: 0 auto;
+}
+.main-wrapper.dark-mode {
   color: white;
   background-color: #2f2f2f;
+}
+.main-wrapper.light-mode {
+  color: black;
+  background-color: white;
 }
 
 header {
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(to right bottom, #ff4500, #ff4047, #f44c70, #de5f8e, #c2719f);
-
+}
+header .toggle {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+header .toggle i {
+  font-size: 40px;
 }
 header #month-container,
 header #week-container {
@@ -24,7 +39,7 @@ header #week-container {
 }
 
 header #month-container {
-  height: 25vh;
+  height: 20vh;
   flex-direction: row;
   justify-content: space-evenly;
 }
@@ -32,11 +47,11 @@ header i {
   font-size: 60px;
   color: #2f2f2f;
 }
-header i:hover {
+header #month-container i:hover {
   color: rgba(0, 0, 0, 0.5);
 }
 header #week-container {
-  height: 15vh;
+  height: 13vh;
   justify-content: space-around;
 }
 header #week-container span {
@@ -68,8 +83,10 @@ ul li {
   flex-basis: calc(100% / 7);
   height: calc(60vh / 5);
   font-size: 25px;
-  border: 1px dotted whitesmoke;
-  
+  border: 1px dotted whitesmoke;  
+}
+ul li.dark-dot {
+  border: 1px dotted black; 
 }
 
 

@@ -146,6 +146,13 @@ $('.prev').click(function () {
 
 
 
+// Funzione - modalità schermo light
+$('.toggle').click( function() {
+  // alert('test');
+$('.main-wrapper').toggleClass('light-mode');
+$('ul li').toggleClass('dark-dot');
+}); // fun toggle
+
 
 
 
