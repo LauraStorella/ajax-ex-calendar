@@ -22,7 +22,7 @@ Ogni volta che cambio mese dovrò:
 
 
 
-// STEP #1
+// MILESTONE #1
 // Creo var con data di inizio (2018-01-01)
 var currentDate=moment("2018-01-01");
 
@@ -51,18 +51,100 @@ function printMonth(currentDay){
     var day = i;
     var context = {
       'days': day + " " + currentMonth,
+      'holiday': currentDay.format('YYYY-MM-')+addzero(i)
     }
     $('#monthDays').append(template(context));
   }
-  // Funzione per verificare se giorno è festività
+  // Funzione per verificare giorni festività
+  var numMonth= currentDay.format('M');
+  checkHoliday(numMonth)
+}
+
+
+// Funzione - aggiungo 0 se giorno mese < 10
+function addzero(day){
+  if (day < 10) {
+    return '0' + day;
+  }
+  else {
+    return day;
+  }
 }
 
 
 
-// Funzione - verifico se giorno è festività
-function checkHoliday() {
-  // Chiamata ajax per comunicare con API  
-}
+// Funzione - verifico le festività per il mese scelto
+function checkHoliday(selectedMonth) {
+  // Chiamata ajax per comunicare con API
+  $.ajax(
+    {
+      url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
+      method: "GET",
+      data: {
+        'year': 2018,
+        'month': selectedMonth - 1
+      },
+      success: function (data) {
+      var result = data.response;
+      console.log(result);
+
+      for (var i = 0; i < result.length; i++) {
+        var holidayDate=result[i].date;
+        console.log(holidayDate);
+        
+        var holidayName=result[i].name;
+        console.log(holidayName);
+        
+      }
+
+      $('li[data-holiday]').each(function(){
+        if ($(this).attr('data-holiday')==holidayDate) {
+          var holidayDay = $(this).text();
+          $(this).text(holidayDay+ " "+holidayName)
+          $(this).addClass("red");
+        }
+      });
+
+      },
+      error: function () {
+        alert('Ops! Si è verificato un errore.');
+      }
+    }
+   ); // ajax  
+} // fun checkHoliday
+
+
+
+// MILESTONE #2
+
+// Funzione - visualizzo mesi successivi a quello corrente
+// Creo evento click su freccia .next
+//    ---> vado al mese successivo (aggiungo +1 mese)
+//    ---> chiamo funzione che stampa i giorni del mese
+//    ---> chiamo funzione che stampa le festività
+$('.next').click(function () {
+  if ( currentDate.month() < 11 ) {
+    $('#monthDays').children().remove();
+    currentDate = currentDate.add(1, 'M');
+    printMonth(currentDate);
+    checkHoliday(currentDate);  
+  }  
+}); // fun next month
+
+
+// Funzione - visualizzo mesi precedenti a quello corrente
+// Creo evento click su freccia .prev
+//    ---> vado al mese precedente (sottraggo -1 mese)
+//    ---> chiamo funzione che stampa i giorni del mese
+//    ---> chiamo funzione che stampa le festività
+$('.prev').click(function () {
+  if ( currentDate.month() > 0 ) {
+    $('#monthDays').children().remove();
+    currentDate = currentDate.subtract(1, 'M');
+    printMonth(currentDate);
+    checkHoliday(currentDate);  
+  }  
+}); // fun previous month
 
 
 
@@ -79,44 +161,6 @@ function checkHoliday() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
 }); // document ready

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <!-- <link rel="stylesheet" href="css/12col.css"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
@@ -20,15 +20,16 @@
       <div class="month-wrapper">
 
         <header>
-          <i class="fas fa-chevron-left"></i>          
+          <i class="fas fa-caret-left prev"></i>
           <h1 id="current-month"></h1>
-          <i class="fas fa-chevron-right"></i>  
+          <i class="fas fa-caret-right next"></i>  
         </header>
 
-
-        <ul id="monthDays">
-          <!-- Popolo <li> dinamicamente con template -->
-        </ul>
+        <main>
+          <ul id="monthDays">
+            <!-- Popolo <li> dinamicamente con template -->
+          </ul>
+        </main>
       </div>
     </div>
 
@@ -36,7 +37,7 @@
 
     <!-- Handlebars Template - inizio -->
     <script id="template-calendar" type="text/x-handlebars-template">
-      <li> {{ days }} </li>
+      <li data-holiday="{{ holiday }}"> {{ days }} </li>
     </script>
     <!-- Handlebars Template - fine -->
 

@@ -1,29 +1,54 @@
-.month-wrapper {
-  width: 80%;
-  height: 100vh;
-  margin: 0 auto;
-  background-color: lightgray;
+body {
+  font-family: 'Jura', sans-serif;
 }
 
+.main-wrapper {
+  width: 50%;
+  height: 100vh;
+  margin: 0 auto;
+  color: white;
+  background-color: #2f2f2f;
+}
 
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  height: 40vh;
+  background-color: orangered;
 }
 header i {
-  font-size: 30px;
+  font-size: 40px;
+  color: #2f2f2f;
 }
 
 h1 {
   text-align: center;
+  font-size: 35px;
 }
+
 ul {
   list-style: none;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: calc(100% / 7);
+  height: calc(60vh / 5);
+  border: 1px dotted whitesmoke;
+  
 }
 
 
+/* Classe JS - per colore giorni festività */
+.red {
+  color: orangered;
+}
 
 
 
