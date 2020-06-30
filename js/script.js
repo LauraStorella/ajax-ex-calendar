@@ -23,8 +23,14 @@ Ogni volta che cambio mese dovrò:
 
 
 // MILESTONE #1
-// Creo var con data di inizio (2018-01-01)
-var currentDate=moment("2018-01-01");
+// Creo OGGETTO Moment
+//  ---> var con data di inizio (2018-01-01)
+var currentDate=moment({
+  day: 1,
+  month: 0,
+  year: 2018
+});
+// console.log(currentDate); // stampa array di object
 
 // Chiamo funzione stampa giorni del mese 
 printMonth(currentDate);
@@ -36,11 +42,13 @@ printMonth(currentDate);
 // Funzione - stampa giorni del mese
 function printMonth(currentDay){
   $('#monthDays').html();
-  // Richiedo formato data
+  // Richiedo formato data per mese e anno
   var currentMonth = currentDay.format('MMMM');
+  // console.log(currentMonth);
   var currentYear = currentDay.format('YYYY');
-
-  // Richiedo conteggio giorni in mese
+  // console.log(currentYear);
+  
+  // Richiedo conteggio giorni in un mese
   // ---> creo ciclo For e appendo elementi in html
   var daysInMonth = currentDay.daysInMonth();
   var source = $('#template-calendar').html();
@@ -71,31 +79,34 @@ function addZero(number){
 
 
 // Funzione - verifico le festività per il mese scelto
-function checkHoliday(selectedMonth) {
+function checkHoliday() {
   // Chiamata ajax per comunicare con API
   $.ajax(
     {
       url: "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0",
       method: "GET",
       data: {
-        'year': 2018,
-        'month': selectedMonth - 1
+        'year': currentDate.year(),
+        'month': currentDate.month(),
       },
       success: function (data) {
       var result = data.response;
-      console.log(result);
+      console.log(result);  
 
+      // Ciclo For
+      //  --> per ogni festività, aggiungo classe e testo alla data corrispondente
       for (var i = 0; i < result.length; i++) {
-        var holidayDate=result[i].date;
-        console.log(holidayDate);
-        
-        var holidayName=result[i].name;
-        console.log(holidayName);
-        
+        // console.log(i);
+        // Prendo data della festività e creo var
+        var holidayDate = result[i].date;
+        // console.log(holidayDate);
+        // Prendo nome della festività e creo var
+        var holidayName = result[i].name;
+        // console.log(holidayName); 
       }
 
       $('li[data-holiday]').each(function(){
-        if ($(this).attr('data-holiday')==holidayDate) {
+        if ($(this).attr('data-holiday') === holidayDate) {
           var holidayDay = $(this).text();
           // $(this).text(holidayDay+ " "+holidayName);   // versione data estesa
           $(this).text(holidayDay);   // versione data solo giorno
@@ -156,16 +167,5 @@ $('ul li').toggleClass('dark-dot');
 
 
 
-
-
-
-
-
-
-
-
-
-
-  
 
 }); // document ready
